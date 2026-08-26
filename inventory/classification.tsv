@@ -1,0 +1,90 @@
+name	bucket	evidence_or_target
+BitVec.lsbs	REDUNDANT	definitionally `x.setWidth w`; whole lemma family exists in core under `setWidth` names (see evidence/Redundant.lean)
+BitVec.foldl	UNCLEAR	genuine gap; home is Lean core per Mathlib/Data/BitVec.lean policy note; core has only `iunfoldr` — Zulip design question
+BitVec.weight	UNCLEAR	genuine gap (no popCount in core or mathlib at pins); design question: core `popCount` vs mathlib bridge to `hammingNorm` (Mathlib/InformationTheory/Hamming.lean)
+BitVec.dot	UNCLEAR	same cluster as weight
+BitVec.dotZ₂	UNCLEAR	same cluster as weight
+BitVec.instFintype(Basic.lean:19)	REDUNDANT	inferable: mathlib `FinEnum (BitVec n)` + priority-100 `FinEnum → Fintype`
+BitVec.instFintype(Lemmas.lean:10)	REDUNDANT	duplicate of the duplicate above (also shadows mathlib's; third instance in scope)
+BitVec.cons_msb_lsbs	REDUNDANT	core `BitVec.cons_msb_setWidth` (@[simp])
+BitVec.lsbs_zero	REDUNDANT	core `BitVec.setWidth_zero`
+BitVec.lsbs_cons	REDUNDANT	core `BitVec.setWidth_cons`
+BitVec.lsbs_xor	REDUNDANT	core `BitVec.setWidth_xor`
+BitVec.lsbs_or	REDUNDANT	core `BitVec.setWidth_or`
+BitVec.lsbs_and	REDUNDANT	core `BitVec.setWidth_and`
+BitVec.getElem_eq_msb	REDUNDANT	core `BitVec.msb_eq_getLsbD_last` + `BitVec.getLsbD_eq_getElem`
+BitVec.cons_true_allOnes	UPSTREAM	Lean core Init/Data/BitVec/Lemmas.lean; name `cons_true_allOnes`
+BitVec.foldl_nil	UNCLEAR	follows the foldl cluster decision
+BitVec.foldl_cons	UNCLEAR	follows the foldl cluster decision
+BitVec.lsbs_allOnes	UPSTREAM	Lean core, generalized to `setWidth_allOnes (h : k ≤ n)`
+BitVec.weight_zero	UNCLEAR	follows the weight cluster decision
+BitVec.weight_allOnes	UNCLEAR	follows the weight cluster decision
+BitVec.weight_cons	UNCLEAR	follows the weight cluster decision
+BitVec.weight_and_self	UNCLEAR	follows the weight cluster decision
+BitVec.weight_and_le	UNCLEAR	follows the weight cluster decision
+BitVec.weight_or	UNCLEAR	follows the weight cluster decision
+BitVec.and_xor_distrib_left	UPSTREAM	Lean core Init/Data/BitVec/Lemmas.lean; same name
+BitVec.and_xor_distrib_right	UPSTREAM	Lean core Init/Data/BitVec/Lemmas.lean; same name
+BitVec.dot_comm	UNCLEAR	follows the weight cluster decision
+BitVec.cons_dot_cons	UNCLEAR	follows the weight cluster decision
+BitVec.zero_dot	UNCLEAR	follows the weight cluster decision
+BitVec.dot_zero	UNCLEAR	follows the weight cluster decision
+BitVec.dot_allOnes	UNCLEAR	follows the weight cluster decision
+BitVec.dotZ₂_eq_odd_weight	UNCLEAR	follows the weight cluster decision
+BitVec.cons_dotZ₂_cons	UNCLEAR	follows the weight cluster decision
+BitVec.zero_dotZ₂	UNCLEAR	follows the weight cluster decision
+BitVec.dotZ₂_zero	UNCLEAR	follows the weight cluster decision
+BitVec.dotZ₂_comm	UNCLEAR	follows the weight cluster decision
+BitVec.dotZ₂_xor_distrib_left	UNCLEAR	follows the weight cluster decision
+BitVec.dotZ₂_xor_distrib_right	UNCLEAR	follows the weight cluster decision
+notation π	LOCAL	mathlib deliberately does not claim global `π`; project taste
+Complex.cos_pi_div_four	UPSTREAM	Mathlib/Analysis/SpecialFunctions/Trigonometric/Basic.lean, Complex section (Real versions exist; Complex family has π/2 but not π/4)
+Complex.sin_pi_div_four	UPSTREAM	same target as cos_pi_div_four
+Complex.exp_three_pi_div_two	LOCAL	derivable from mathlib in two rewrites (`exp_add` + `exp_two_pi_mul_I` + `exp_neg_pi_div_two_mul_I`, proof kept in evidence/Redundant.lean) BUT earns its keep as a simp normal form: Gate/Equivs.lean:86 silently depends on it (deletion breaks the build) — verified empirically on the deletion branch
+Complex.one_ne_neg_one	LOCAL	derivable by `norm_num` (general fact `Ring.neg_one_ne_one_of_char_ne_two`; proof kept in evidence/Redundant.lean) BUT earns its keep as a simp lemma: Pauli/Lemmas.lean:20 (σy_ne_1) silently depends on it — deletion breaks the build, verified empirically
+Complex.neg_I_pow_eq_pow_mod	UPSTREAM	Mathlib/Data/Complex/Basic.lean next to `I_pow_eq_pow_mod`
+Fin.add_neg	REDUNDANT	`sub_eq_add_neg` (n = 0 vacuous); see evidence
+CMatrix	LOCAL	project shorthand
+CVector	LOCAL	project shorthand
+CSquare	LOCAL	project shorthand
+Matrix.conjTranspose_transpose_comm	REDUNDANT	`Matrix.conjTranspose_transpose` + `Matrix.transpose_conjTranspose` (both sides `M.map star`)
+Matrix.pow_true	REDUNDANT	`Bool.toNat_true` + `pow_one` (both simp; hypotheses over-strong: Monoid suffices)
+Matrix.pow_false	REDUNDANT	`Bool.toNat_false` + `pow_zero`
+CMatrix.Commute	REDUNDANT	definitional alias of `_root_.Commute`
+CMatrix.AntiCommute	UNCLEAR	no `AntiCommute` anywhere in mathlib at pin (genuine gap); unused in LeanQuantum today; if proposed, state for a general ring and ask on Zulip first
+Matrix.kron	LOCAL	Fin-flattened wrapper of `kroneckerMap`; mathlib chose the `l × m` index type — flattened variant is a Zulip design question
+Matrix.kron_def	LOCAL	bridge lemma for the local wrapper
+notation ⊗ (scoped Kron)	LOCAL	notation for the local wrapper
+Matrix.kron_apply	LOCAL	about local kron; counterpart `kroneckerMap_apply`
+Matrix.zero_kron	LOCAL	counterpart `zero_kronecker`
+Matrix.kron_zero	LOCAL	counterpart `kronecker_zero`
+Matrix.add_kron	LOCAL	counterpart `add_kronecker`
+Matrix.kron_add	LOCAL	counterpart `kronecker_add`
+Matrix.smul_kron	LOCAL	counterpart `smul_kronecker`
+Matrix.kron_smul	LOCAL	counterpart `kronecker_smul`
+Matrix.kron_neg	LOCAL	derivable via smul (-1)
+Matrix.neg_kron	LOCAL	derivable via smul (-1)
+Matrix.one_kron_one	LOCAL	counterpart `one_kronecker_one`
+Matrix.kron_one'	LOCAL	reindex bookkeeping specific to the flattened wrapper
+Matrix.kron_one	LOCAL	counterpart `kronecker_one`
+Matrix.one'_kron	LOCAL	reindex bookkeeping specific to the flattened wrapper
+Matrix.one_kron	LOCAL	counterpart `one_kronecker`
+Matrix.mul_kron_mul	LOCAL	counterpart `mul_kronecker_mul`
+Matrix.kron_assoc	LOCAL	counterpart `kronecker_assoc`
+Matrix.trace_kron	LOCAL	counterpart `trace_kronecker`
+Matrix.det_kron	LOCAL	counterpart `det_kronecker`
+Matrix.inv_kron	LOCAL	counterpart `inv_kronecker`
+Matrix.transpose_kron	LOCAL	about local kron (mathlib: via `kroneckerMap` transpose reasoning)
+Matrix.conjTranspose_kron	LOCAL	counterpart `conjTranspose_kronecker`
+CMatrix.powBitVec	LOCAL	quantum-specific (bit-indexed tensor power)
+notation ^ᵥ	LOCAL	notation for powBitVec
+CMatrix.powBitVec_zero	LOCAL	about local def
+CMatrix.one_powBitVec	LOCAL	about local def
+CMatrix.powBitVec_mul_powBitVec	LOCAL	about local def
+CMatrix.powBitVec_cons	LOCAL	about local def
+Matrix.IsUnitary	LOCAL	mathlib idiom is membership in `Matrix.unitaryGroup`; abbrev is project taste
+Matrix.transpose_of_isUnitary	REDUNDANT	`Matrix.transpose_mem_unitaryGroup_iff` (mpr)
+Matrix.conjTranspose_of_isUnitary	REDUNDANT	`Unitary.star_mem` + `Matrix.star_eq_conjTranspose`
+Matrix.kron_of_isUnitary	REDUNDANT	`Matrix.kronecker_mem_unitary` + mechanical reindex transport (see evidence)
+Matrix.mul_of_isUnitary	REDUNDANT	`mul_mem` (unitaryGroup is a submonoid)
+Matrix.smul_of_isUnitary	REDUNDANT	`Unitary.smul_mem_of_mem`

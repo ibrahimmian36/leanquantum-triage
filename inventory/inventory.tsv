@@ -1,0 +1,90 @@
+file	line	kind	name	attrs	statement
+Quantumlib/ForMathlib/Data/BitVec/Basic.lean	5	def	BitVec.lsbs		def lsbs (x : BitVec (w + 1)) : BitVec w
+Quantumlib/ForMathlib/Data/BitVec/Basic.lean	7	def	BitVec.foldl		def foldl (x : BitVec w) (f : Bool → α → α) (init : α) : α
+Quantumlib/ForMathlib/Data/BitVec/Basic.lean	10	def	BitVec.weight		def weight (x : BitVec w) : Nat
+Quantumlib/ForMathlib/Data/BitVec/Basic.lean	13	def	BitVec.dot		def dot (x y : BitVec w) : Nat
+Quantumlib/ForMathlib/Data/BitVec/Basic.lean	16	def	BitVec.dotZ₂		def dotZ₂ (x y : BitVec w) : Bool
+Quantumlib/ForMathlib/Data/BitVec/Basic.lean	19	instance	BitVec.<anonymous>		instance : Fintype (BitVec w)
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	10	instance	BitVec.<anonymous>		instance : Fintype (BitVec w)
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	13	theorem	BitVec.cons_msb_lsbs		theorem cons_msb_lsbs (x : BitVec (w + 1)) : cons x.msb x.lsbs = x
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	17	theorem	BitVec.lsbs_zero		theorem lsbs_zero : (0#(m + 1)).lsbs = 0#m
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	21	theorem	BitVec.lsbs_cons		theorem lsbs_cons (x : BitVec w) b : (BitVec.cons b x).lsbs = x
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	25	theorem	BitVec.lsbs_xor		theorem lsbs_xor (x y : BitVec (w + 1)) : (x ^^^ y).lsbs = x.lsbs ^^^ y.lsbs
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	30	theorem	BitVec.lsbs_or		theorem lsbs_or (x y : BitVec (w + 1)) : (x ||| y).lsbs = x.lsbs ||| y.lsbs
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	35	theorem	BitVec.lsbs_and		theorem lsbs_and (x y : BitVec (w + 1)) : (x &&& y).lsbs = x.lsbs &&& y.lsbs
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	39	theorem	BitVec.getElem_eq_msb		theorem getElem_eq_msb (x : BitVec (w + 1)) : x[w] = x.msb
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	43	theorem	BitVec.cons_true_allOnes		theorem cons_true_allOnes : cons true (allOnes m) = allOnes (m + 1)
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	49	theorem	BitVec.foldl_nil		theorem foldl_nil : foldl nil f a = a
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	53	theorem	BitVec.foldl_cons		theorem foldl_cons {x : BitVec w} : foldl (cons b x) f a = f b (foldl x f a)
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	60	theorem	BitVec.lsbs_allOnes		theorem lsbs_allOnes : (allOnes (m + 1)).lsbs = allOnes m
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	67	theorem	BitVec.weight_zero		theorem weight_zero : (0#m).weight = 0
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	73	theorem	BitVec.weight_allOnes		theorem weight_allOnes : (allOnes m).weight = m
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	79	theorem	BitVec.weight_cons		theorem weight_cons (x : BitVec w) : (BitVec.cons a x).weight = a.toNat + x.weight
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	83	theorem	BitVec.weight_and_self		theorem weight_and_self (x : BitVec w) : (x &&& x).weight = x.weight
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	87	theorem	BitVec.weight_and_le		theorem weight_and_le (x y : BitVec w) : (x &&& y).weight ≤ x.weight
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	98	theorem	BitVec.weight_or		theorem weight_or (x y : BitVec w) : (x ||| y).weight = x.weight + y.weight - (x &&& y).weight
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	123	theorem	BitVec.and_xor_distrib_left		theorem and_xor_distrib_left (x y z : BitVec w) : x &&& (y ^^^ z) = x &&& y ^^^ x &&& z
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	128	theorem	BitVec.and_xor_distrib_right		theorem and_xor_distrib_right (x y z : BitVec w) : (x ^^^ y) &&& z = x &&& z ^^^ y &&& z
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	133	theorem	BitVec.dot_comm		theorem dot_comm (x y : BitVec w) : x.dot y = y.dot x
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	136	theorem	BitVec.cons_dot_cons		theorem cons_dot_cons (x y : BitVec w) : (cons a x).dot (cons b y) = ((a && b).toNat + x.dot y)
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	141	theorem	BitVec.zero_dot		theorem zero_dot : (0#m).dot x = 0
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	145	theorem	BitVec.dot_zero		theorem dot_zero : (x : BitVec m).dot (0#m) = 0
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	149	theorem	BitVec.dot_allOnes		theorem dot_allOnes : (x : BitVec m).dot (allOnes m) = x.weight
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	153	theorem	BitVec.dotZ₂_eq_odd_weight		theorem dotZ₂_eq_odd_weight (x y : BitVec w) : x.dotZ₂ y = ((x.dot y) % 2 == 1)
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	156	theorem	BitVec.cons_dotZ₂_cons		theorem cons_dotZ₂_cons (x y : BitVec w) : (cons a x).dotZ₂ (cons b y) = ((a && b) ^^ x.dotZ₂ y)
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	163	theorem	BitVec.zero_dotZ₂		theorem zero_dotZ₂ : (0#m).dotZ₂ x = false
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	167	theorem	BitVec.dotZ₂_zero		theorem dotZ₂_zero : (x : BitVec m).dotZ₂ (0#m) = false
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	170	theorem	BitVec.dotZ₂_comm		theorem dotZ₂_comm (x y : BitVec m) : x.dotZ₂ y = y.dotZ₂ x
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	173	theorem	BitVec.dotZ₂_xor_distrib_left		theorem dotZ₂_xor_distrib_left (x y z : BitVec m) : x.dotZ₂ (y ^^^ z) = (x.dotZ₂ y ^^ x.dotZ₂ z)
+Quantumlib/ForMathlib/Data/BitVec/Lemmas.lean	183	theorem	BitVec.dotZ₂_xor_distrib_right		theorem dotZ₂_xor_distrib_right (x y z : BitVec m) : (x ^^^ y).dotZ₂ z = (x.dotZ₂ z ^^ y.dotZ₂ z)
+Quantumlib/ForMathlib/Data/Complex/Basic.lean	5	notation	"π" => Real.pi		notation "π" => Real.pi
+Quantumlib/ForMathlib/Data/Complex/Basic.lean	10	theorem	Complex.cos_pi_div_four		theorem cos_pi_div_four : Complex.cos (π / 4) = √2 / 2
+Quantumlib/ForMathlib/Data/Complex/Basic.lean	17	theorem	Complex.sin_pi_div_four		theorem sin_pi_div_four : Complex.sin (π / 4) = √2 / 2
+Quantumlib/ForMathlib/Data/Complex/Basic.lean	24	theorem	Complex.exp_three_pi_div_two		theorem exp_three_pi_div_two : Complex.exp (3 * ↑π / 2 * Complex.I) = -Complex.I
+Quantumlib/ForMathlib/Data/Complex/Basic.lean	31	theorem	Complex.one_ne_neg_one		theorem one_ne_neg_one : (1 : ℂ) ≠ -1
+Quantumlib/ForMathlib/Data/Complex/Basic.lean	37	theorem	Complex.neg_I_pow_eq_pow_mod		theorem neg_I_pow_eq_pow_mod (n : ℕ) : (-I) ^ n = (-I) ^ (n % 4)
+Quantumlib/ForMathlib/Data/Fin.lean	6	theorem	Fin.add_neg		theorem add_neg (a b : Fin n) : a + -b = a - b
+Quantumlib/ForMathlib/Data/Matrix/Basic.lean	7	abbrev	CMatrix		abbrev CMatrix m n
+Quantumlib/ForMathlib/Data/Matrix/Basic.lean	8	abbrev	CVector		abbrev CVector n
+Quantumlib/ForMathlib/Data/Matrix/Basic.lean	9	abbrev	CSquare		abbrev CSquare n
+Quantumlib/ForMathlib/Data/Matrix/Basic.lean	13	theorem	Matrix.conjTranspose_transpose_comm		theorem conjTranspose_transpose_comm : ∀ (A : CMatrix m n), Aᴴᵀ = Aᵀᴴ
+Quantumlib/ForMathlib/Data/Matrix/Basic.lean	17	theorem	Matrix.pow_true		theorem pow_true [Fintype n] [DecidableEq n] [CommRing R] (M : Matrix n n R) : M ^ true.toNat = M
+Quantumlib/ForMathlib/Data/Matrix/Basic.lean	21	theorem	Matrix.pow_false		theorem pow_false [Fintype n] [DecidableEq n] [CommRing R] (M : Matrix n n R) : M ^ false.toNat = 1
+Quantumlib/ForMathlib/Data/Matrix/Basic.lean	26	def	CMatrix.Commute		def CMatrix.Commute (A B : CMatrix n n) : Prop
+Quantumlib/ForMathlib/Data/Matrix/Basic.lean	27	def	CMatrix.AntiCommute		def CMatrix.AntiCommute (A B : CMatrix n n) : Prop
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	7	def	Matrix.kron		def kron (m₁ : CMatrix a b) (m₂ : CMatrix c d) : CMatrix (a * c) (b * d)
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	11	lemma	Matrix.kron_def		lemma kron_def (m₁ : CMatrix a b) (m₂ : CMatrix c d) : kron m₁ m₂ = reindex finProdFinEquiv finProdFinEquiv (m₁ ⊗ₖ m₂)
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	15	scoped[Kron] infixl	:100 " ⊗ " => Matrix.kron		scoped[Kron] infixl:100 " ⊗ " => Matrix.kron
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	20	theorem	Matrix.kron_apply		theorem kron_apply (A : CMatrix l m) (B : CMatrix n p) (i j) : (A ⊗ B) i j = A i.divNat j.divNat * B i.modNat j.modNat
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	25	theorem	Matrix.zero_kron		theorem zero_kron (B : CMatrix n p) : (0 : CMatrix l m) ⊗ B = 0
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	30	theorem	Matrix.kron_zero		theorem kron_zero (A : CMatrix l m) : A ⊗ (0 : CMatrix n p) = 0
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	35	theorem	Matrix.add_kron		theorem add_kron (A₁ A₂ : CMatrix l m) (B : CMatrix n p) : (A₁ + A₂) ⊗ B = A₁ ⊗ B + A₂ ⊗ B
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	41	theorem	Matrix.kron_add		theorem kron_add (A : CMatrix l m) (B₁ B₂ : CMatrix n p) : A ⊗ (B₁ + B₂) = A ⊗ B₁ + A ⊗ B₂
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	47	theorem	Matrix.smul_kron		theorem smul_kron (r : ℂ) (A : CMatrix l m) (B : CMatrix n p) : (r • A) ⊗ B = r • A ⊗ B
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	53	theorem	Matrix.kron_smul		theorem kron_smul (r : ℂ) (A : CMatrix l m) (B : CMatrix n p) : A ⊗ (r • B) = r • A ⊗ B
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	59	theorem	Matrix.kron_neg		theorem kron_neg (A : CMatrix l m) (B : CMatrix n p) : A ⊗ (-B) = -(A ⊗ B)
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	64	theorem	Matrix.neg_kron		theorem neg_kron (A : CMatrix l m) (B : CMatrix n p) : (-A) ⊗ B = -(A ⊗ B)
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	70	theorem	Matrix.one_kron_one		theorem one_kron_one : (1 : CMatrix m m) ⊗ (1 : CMatrix n n) = 1
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	76	theorem	Matrix.kron_one'		theorem kron_one' : A ⊗ (1 : CMatrix 1 1) = reindex (finCongr <| Nat.mul_one ..).symm (finCongr <| Nat.mul_one ..).symm A
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	96	theorem	Matrix.kron_one		theorem kron_one : A ⊗ (1 : CMatrix n n) = reindex finProdFinEquiv finProdFinEquiv (blockDiagonal fun _ => A)
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	101	theorem	Matrix.one'_kron		theorem one'_kron : (1 : CMatrix 1 1) ⊗ (A : CMatrix m n) = reindex (finCongr <| Nat.one_mul ..).symm (finCongr <| Nat.one_mul ..).symm A
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	131	theorem	Matrix.one_kron		theorem one_kron (B : CMatrix m n) : (1 : CMatrix l l) ⊗ B = reindex ((Equiv.prodComm ..).trans finProdFinEquiv) ((Equiv.prodComm ..).trans finProdFinEquiv) (blockDiagonal fun _ => B)
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	139	theorem	Matrix.mul_kron_mul		theorem mul_kron_mul (A : CMatrix l m) (B : CMatrix m n) (A' : CMatrix l' m') (B' : CMatrix m' n') : (A * B) ⊗ (A' * B') = A ⊗ A' * B ⊗ B'
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	145	theorem	Matrix.kron_assoc		theorem kron_assoc (A : CMatrix l m) (B : CMatrix n p) (C : CMatrix q r) : reindex (finCongr <| Nat.mul_assoc ..) (finCongr <| Nat.mul_assoc ..) (A ⊗ B ⊗ C) = A ⊗ (B ⊗ C)
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	156	theorem	Matrix.trace_kron		theorem trace_kron (A : CMatrix m m) (B : CMatrix n n) : trace (A ⊗ B) = trace A * trace B
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	164	theorem	Matrix.det_kron		theorem det_kron (A : CMatrix m m) (B : CMatrix n n) : det (A ⊗ B) = det A ^ n * det B ^ m
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	170	theorem	Matrix.inv_kron		theorem inv_kron (A : CMatrix m m) (B : CMatrix n n) : (A ⊗ B)⁻¹ = A⁻¹ ⊗ B⁻¹
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	176	theorem	Matrix.transpose_kron		theorem transpose_kron : ∀ (A : CMatrix l m) (B : CMatrix n p), (A ⊗ B)ᵀ = Aᵀ ⊗ Bᵀ
+Quantumlib/ForMathlib/Data/Matrix/Kron.lean	182	theorem	Matrix.conjTranspose_kron		theorem conjTranspose_kron : ∀ (A : CMatrix l m) (B : CMatrix n p), (A ⊗ B)ᴴ = Aᴴ ⊗ Bᴴ
+Quantumlib/ForMathlib/Data/Matrix/PowBitVec.lean	9	def	CMatrix.powBitVec		def powBitVec (self : CMatrix m m) (x : BitVec n) : CMatrix (m ^ n) (m ^ n)
+Quantumlib/ForMathlib/Data/Matrix/PowBitVec.lean	19	infix	:80 " ^ᵥ " => powBitVec		infix:80 " ^ᵥ " => powBitVec
+Quantumlib/ForMathlib/Data/Matrix/PowBitVec.lean	23	theorem	CMatrix.powBitVec_zero		theorem powBitVec_zero (M : CMatrix n n) m : M ^ᵥ 0#m = 1
+Quantumlib/ForMathlib/Data/Matrix/PowBitVec.lean	38	theorem	CMatrix.one_powBitVec		theorem one_powBitVec : (1 : CMatrix n n) ^ᵥ x = 1
+Quantumlib/ForMathlib/Data/Matrix/PowBitVec.lean	51	theorem	CMatrix.powBitVec_mul_powBitVec		theorem powBitVec_mul_powBitVec (A B : CMatrix n n) {m} (x : BitVec m) : A ^ᵥ x * B ^ᵥ x = (A * B) ^ᵥ x
+Quantumlib/ForMathlib/Data/Matrix/PowBitVec.lean	66	theorem	CMatrix.powBitVec_cons		theorem powBitVec_cons (A : CMatrix n n) b (x : BitVec m) : A ^ᵥ (BitVec.cons b x) = Matrix.reindex (finCongr <|
+Quantumlib/ForMathlib/Data/Matrix/Unitary.lean	8	abbrev	Matrix.IsUnitary		abbrev IsUnitary {n} (M : CSquare n)
+Quantumlib/ForMathlib/Data/Matrix/Unitary.lean	10	theorem	Matrix.transpose_of_isUnitary		theorem transpose_of_isUnitary : ∀ (M : CSquare n), M.IsUnitary → Mᵀ.IsUnitary
+Quantumlib/ForMathlib/Data/Matrix/Unitary.lean	19	theorem	Matrix.conjTranspose_of_isUnitary		theorem conjTranspose_of_isUnitary : ∀ (M : CSquare n), M.IsUnitary → Mᴴ.IsUnitary
+Quantumlib/ForMathlib/Data/Matrix/Unitary.lean	27	theorem	Matrix.kron_of_isUnitary		theorem kron_of_isUnitary : ∀ (M₁ : CSquare m) (M₂ : CSquare n), M₁.IsUnitary → M₂.IsUnitary → (M₁ ⊗ M₂).IsUnitary
+Quantumlib/ForMathlib/Data/Matrix/Unitary.lean	33	theorem	Matrix.mul_of_isUnitary		theorem mul_of_isUnitary : ∀ (M₁ M₂ : CSquare n), M₁.IsUnitary → M₂.IsUnitary → (M₁ * M₂).IsUnitary
+Quantumlib/ForMathlib/Data/Matrix/Unitary.lean	39	theorem	Matrix.smul_of_isUnitary		theorem smul_of_isUnitary : ∀ (c : ℂ) (M : CSquare n), M.IsUnitary → c ∈ unitary ℂ → (c • M).IsUnitary

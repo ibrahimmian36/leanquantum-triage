@@ -1,0 +1,28 @@
+✔ [8334/8353] Built Quantumlib.ForMathlib.Data.Complex.Basic (49s)
+✔ [8335/8353] Built Quantumlib.Data.Gate.PhaseShift (39s)
+✔ [8336/8353] Built Quantumlib.Data.Gate.Rotate (39s)
+✔ [8337/8353] Built Quantumlib.ForMathlib.Data.BitVec.Lemmas (257s)
+✔ [8338/8353] Built Quantumlib.Data.Gate.Pauli.Defs (257s)
+✔ [8339/8353] Built Quantumlib.ForMathlib.Data.Matrix.PowBitVec (221s)
+✔ [8340/8353] Built Quantumlib.Data.Gate.Pauli.Notation (214s)
+✔ [8341/8353] Built Quantumlib.Data.Gate.Basic (228s)
+✔ [8342/8353] Built Quantumlib.Data.Gate.Pauli (246s)
+✔ [8343/8353] Built Quantumlib.Data.Gate.Equivs (326s)
+✔ [8344/8353] Built Quantumlib.Data.Basic (323s)
+✔ [8345/8353] Built Quantumlib.Data.Gate.ConjTranspose (337s)
+✔ [8346/8353] Built Quantumlib.Data.Gate.Pauli.Lemmas (338s)
+✔ [8347/8353] Built Quantumlib.Basic (88s)
+⚠ [8348/8353] Built Quantumlib.Data.Error.Operator (79s)
+warning: Quantumlib/Data/Error/Operator.lean:138:4: declaration uses `sorry`
+✔ [8349/8353] Built Quantumlib.Data.Gate.Hermitian (79s)
+✔ [8350/8353] Built Quantumlib.Data.Gate.Unitary (82s)
+✔ [8351/8353] Built Quantumlib (12s)
+✖ [8353/8353] Building Quantumlib.Computation (19s)
+trace: .> LEAN_PATH=<repo>/vendor/LeanQuantum/.lake/packages/Cli/.lake/build/lib/lean:<repo>/vendor/LeanQuantum/.lake/packages/batteries/.lake/build/lib/lean:<repo>/vendor/LeanQuantum/.lake/packages/Qq/.lake/build/lib/lean:<repo>/vendor/LeanQuantum/.lake/packages/aesop/.lake/build/lib/lean:<repo>/vendor/LeanQuantum/.lake/packages/proofwidgets/.lake/build/lib/lean:<repo>/vendor/LeanQuantum/.lake/packages/importGraph/.lake/build/lib/lean:<repo>/vendor/LeanQuantum/.lake/packages/LeanSearchClient/.lake/build/lib/lean:<repo>/vendor/LeanQuantum/.lake/packages/plausible/.lake/build/lib/lean:<repo>/vendor/LeanQuantum/.lake/packages/mathlib/.lake/build/lib/lean:<repo>/vendor/LeanQuantum/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.30.0-rc2/bin/lean <repo>/vendor/LeanQuantum/Quantumlib/Computation.lean -o <repo>/vendor/LeanQuantum/.lake/build/lib/lean/Quantumlib/Computation.olean -i <repo>/vendor/LeanQuantum/.lake/build/lib/lean/Quantumlib/Computation.ilean -c <repo>/vendor/LeanQuantum/.lake/build/ir/Quantumlib/Computation.c --setup <repo>/vendor/LeanQuantum/.lake/build/ir/Quantumlib/Computation.setup.json --json
+error: Quantumlib/Computation.lean:33:27: No goals to be solved
+error: Quantumlib/Computation.lean:33:27: No goals to be solved
+error: Quantumlib/Computation.lean:33:27: No goals to be solved
+error: Lean exited with code 1
+Some required targets logged failures:
+- Quantumlib.Computation
+error: build failed
